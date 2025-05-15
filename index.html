@@ -1,0 +1,83 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金价格</title>
+    <!-- 添加字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 4rem;
+            color: #e8a700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .update-time {
+            color: #666;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>黄金价格（人民币）</h1>
+        <div id="price" class="price">--</div>
+        <div class="update-time">数据更新时间：-</div>
+    </div>
+
+    <script>
+        // 这个例子中使用的是固定的测试数据，实际应用中需要从可靠的API获取实时价格
+
+        // 模拟的黄金价格（单位：元/克）
+        let price = 450.0;
+
+        // 更新价格显示
+        function updatePrice() {
+            document.getElementById('price').textContent = price.toFixed(2) + ' 元/克';
+            document.querySelector('.update-time').textContent =
+                `数据更新时间：${new Date().toLocaleString()}`;
+
+            // 模拟价格波动（仅为测试用例）
+            price += (Math.random() - 0.5) * 2;
+        }
+
+        // 初始加载时显示价格
+        updatePrice();
+
+        // 定时更新价格（间隔时间：1秒，仅用于测试）
+        setInterval(updatePrice, 1000);
+
+        // 模拟初始波动
+        price = 450.0 + (Math.random() * 20);
+    </script>
+</body>
+</html>
